@@ -76,6 +76,6 @@ class PokerGameTest {
     // then
     assertEquals(5, kubasHand.size());
     assertEquals(5, jaceksHand.size());
-    game.deck();
+    assertEquals(42, game.deckSize());
   }
 }

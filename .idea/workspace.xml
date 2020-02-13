@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e223337f-513a-410a-95bd-a1096fe54181" name="Default Changelist" comment="" />
+    <list default="true" id="e223337f-513a-410a-95bd-a1096fe54181" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/PokerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/PokerGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/dpancerz/poker/PokerGameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dpancerz/poker/PokerGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Hand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/PokerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/PokerGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dpancerz/poker/PokerGameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dpancerz/poker/PokerGameTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +26,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -23,6 +37,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1XfQQh9iUTpIAa1fLwAxrDprrQ3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -64,7 +79,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/dpancerz" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DeckTest.smallest_deck_should_not_contain_low_rank_cards">
+  <component name="RunManager" selected="JUnit.PokerGameTest.should_deal_the_cards_to_players">
     <configuration name="DeckTest.smallest_deck_should_not_contain_low_rank_cards" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cards" />
       <extension name="coverage">
@@ -146,9 +161,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PokerGameTest.should_deal_the_cards_to_players" />
         <item itemvalue="JUnit.DeckTest.smallest_deck_should_not_contain_low_rank_cards" />
         <item itemvalue="JUnit.PokerGameTest" />
-        <item itemvalue="JUnit.PokerGameTest.should_deal_the_cards_to_players" />
         <item itemvalue="JUnit.PokerGameTest.should_start_with_two_players" />
         <item itemvalue="JUnit.PokerGameTest.should_not_start_with_one_player" />
       </list>
@@ -164,7 +179,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581434654540</updated>
-      <workItem from="1581434657265" duration="12075000" />
+      <workItem from="1581434657265" duration="15486000" />
     </task>
     <servers />
   </component>
@@ -189,26 +204,26 @@
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
     <state x="4583" y="273" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581435245232" />
-    <state width="1874" height="272" key="GridCell.Tab.0.bottom" timestamp="1581454700924">
-      <screen x="0" y="27" width="1920" height="1006" />
+    <state width="1874" height="281" key="GridCell.Tab.0.bottom" timestamp="1581588159996">
+      <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581454700924" />
-    <state width="1874" height="272" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581440111955" />
-    <state width="1874" height="272" key="GridCell.Tab.0.center" timestamp="1581454700924">
-      <screen x="0" y="27" width="1920" height="1006" />
+    <state width="1874" height="272" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806957" />
+    <state width="1874" height="281" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
+    <state width="1874" height="281" key="GridCell.Tab.0.center" timestamp="1581588159996">
+      <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581454700924" />
-    <state width="1874" height="272" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581440111955" />
-    <state width="1874" height="272" key="GridCell.Tab.0.left" timestamp="1581454700924">
-      <screen x="0" y="27" width="1920" height="1006" />
+    <state width="1874" height="272" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806957" />
+    <state width="1874" height="281" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
+    <state width="1874" height="281" key="GridCell.Tab.0.left" timestamp="1581588159996">
+      <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581454700924" />
-    <state width="1874" height="272" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581440111955" />
-    <state width="1874" height="272" key="GridCell.Tab.0.right" timestamp="1581454700924">
-      <screen x="0" y="27" width="1920" height="1006" />
+    <state width="1874" height="272" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806956" />
+    <state width="1874" height="281" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
+    <state width="1874" height="281" key="GridCell.Tab.0.right" timestamp="1581588159996">
+      <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581454700924" />
-    <state width="1874" height="272" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581440111955" />
+    <state width="1874" height="272" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806957" />
+    <state width="1874" height="281" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
     <state x="4333" y="173" width="924" height="684" key="Maven.ArtifactSearchDialog" timestamp="1581434959434">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>

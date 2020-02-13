@@ -22,4 +22,8 @@ public class Hand {
   protected Set<Card> cards() {
     return cards;
   }
+
+  void add(final Card card) {
+    cards.add(card);
+  }
 }

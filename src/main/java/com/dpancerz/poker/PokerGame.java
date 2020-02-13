@@ -5,6 +5,7 @@ import com.dpancerz.game.NumberOfPlayersOutOfBounds;
 import com.dpancerz.game.Player;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 class PokerGame {
   public static final int MINIMUM_NUMBER_OF_PLAYERS = 2;
@@ -45,9 +46,13 @@ class PokerGame {
   }
 
   void dealCards() {
+    IntStream.range(0, NUMBER_OF_CARDS_PER_PLAYER)
+        .forEach(cardNumber -> players
+            .forEach(player -> player
+                .drawCard(deck.drawOne())));
   }
 
-  Deck deck() {
-    return deck;
+  int deckSize() {
+    return deck.size();
   }
 }
