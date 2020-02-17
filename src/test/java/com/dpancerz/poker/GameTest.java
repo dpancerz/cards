@@ -5,17 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.dpancerz.game.HandSpy;
-import com.dpancerz.game.NumberOfPlayersOutOfBounds;
-import com.dpancerz.game.Player;
-import com.dpancerz.game.PlayerSpy;
 import org.junit.jupiter.api.Test;
 
-class PokerGameTest {
+class GameTest {
   @Test
   void game_should_not_be_started_after_creation() {
     // when
-    PokerGame game = new PokerGame();
+    Game game = new Game();
 
     // then
     assertFalse(game.isStarted());
@@ -24,7 +20,7 @@ class PokerGameTest {
   @Test
   void should_not_start_with_zero_players() {
     // given
-    PokerGame game = new PokerGame();
+    Game game = new Game();
 
     // expect
     assertThrows(NumberOfPlayersOutOfBounds.class,
@@ -35,7 +31,7 @@ class PokerGameTest {
   @Test
   void should_not_start_with_one_player() {
     // given
-    PokerGame game = new PokerGame();
+    Game game = new Game();
     game.join(new Player());
 
     // expect
@@ -47,7 +43,7 @@ class PokerGameTest {
   @Test
   void should_start_with_two_players() {
     // given
-    PokerGame game = new PokerGame();
+    Game game = new Game();
     game.join(new PlayerSpy("Kuba"));
     game.join(new PlayerSpy("Jacek"));
 
@@ -61,7 +57,7 @@ class PokerGameTest {
   @Test
   void should_deal_the_cards_to_players() {
     // given
-    PokerGame game = new PokerGame();
+    Game game = new Game();
     final HandSpy kubasHand = new HandSpy();
     final HandSpy jaceksHand = new HandSpy();
     final Player kuba = new PlayerSpy(kubasHand,"Kuba");

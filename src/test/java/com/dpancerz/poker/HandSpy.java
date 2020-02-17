@@ -1,4 +1,4 @@
-package com.dpancerz.game;
+package com.dpancerz.poker;
 
 import com.dpancerz.cards.Card;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ public class HandSpy extends Hand {
     this(new HashSet<>());
   }
   public HandSpy(final Set<Card> cards) {
-    super(cards);
+    super(new RankMatcher(), cards);
   }
 
   public int size() {

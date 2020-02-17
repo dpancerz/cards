@@ -1,13 +1,11 @@
 package com.dpancerz.poker;
 
 import com.dpancerz.cards.Deck;
-import com.dpancerz.game.NumberOfPlayersOutOfBounds;
-import com.dpancerz.game.Player;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-class PokerGame {
+class Game {
   public static final int MINIMUM_NUMBER_OF_PLAYERS = 2;
   private static final int MAXIMUM_NUMBER_OF_PLAYERS = 10;
   private static final int NUMBER_OF_CARDS_PER_PLAYER = 5;
@@ -15,13 +13,13 @@ class PokerGame {
   private final Deck deck;
   private boolean started;
 
-  PokerGame(final Deck deck) {
+  Game(final Deck deck) {
     this.started = false;
     this.players = new HashSet<>();
     this.deck = deck;
   }
 
-  PokerGame() {
+  Game() {
     this(Deck.ofFiftyTwoCards());
   }
 
@@ -31,6 +29,7 @@ class PokerGame {
       throw new NumberOfPlayersOutOfBounds(players.size());
     }
     setStarted(true);
+    //post(new GameStarted(players.*id));
   }
 
   private void setStarted(final boolean started) {

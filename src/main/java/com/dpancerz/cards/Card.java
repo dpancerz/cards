@@ -11,11 +11,11 @@ public class Card {
     this.suit = suit;
   }
 
-  Rank getRank() {
+  public Rank rank() {
     return rank;
   }
 
-  Suit getSuit() {
+  public Suit suit() {
     return suit;
   }
 

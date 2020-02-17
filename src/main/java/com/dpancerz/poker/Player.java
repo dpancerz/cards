@@ -1,23 +1,26 @@
-package com.dpancerz.game;
+package com.dpancerz.poker;
 
 import static java.util.UUID.randomUUID;
 
 import com.dpancerz.cards.Card;
 
-public class Player {
+class Player {
   private final Hand hand;
   private final String name;
 
-  public Player() {
+  Player() {
     this(new Hand(), randomUUID().toString().substring(6));
   }
 
-  protected Player(Hand hand, final String name) {
+  Player(Hand hand, final String name) {
     this.hand = hand;
     this.name = name;
   }
 
-  public void drawCard(final Card card) {
+  void drawCard(final Card card) {
     hand.add(card);
+    //CardDrawn
   }
+
+
 }

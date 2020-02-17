@@ -1,4 +1,4 @@
-package com.dpancerz.game;
+package com.dpancerz.poker;
 
 import java.util.HashSet;
 

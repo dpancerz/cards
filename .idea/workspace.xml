@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e223337f-513a-410a-95bd-a1096fe54181" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/HighCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/PokerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/PokerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/dpancerz/poker/PokerGameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dpancerz/poker/PokerGameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Hand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/game/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/PokerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/PokerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dpancerz/poker/PokerGameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dpancerz/poker/PokerGameTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/OnePair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/OnePair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/Rank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/RankMatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dpancerz/poker/RankMatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/RankMatcher$PairMatcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/RankMatcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dpancerz/poker/RankMatcher.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -61,26 +60,31 @@
     <property name="project.structure.side.proportion" value="0.32580262" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.dpancerz.cards" />
-      <recent name="com.dpancerz.game" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.dpancerz.game" />
-      <recent name="com.dpancerz.cards" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+    <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.dpancerz.poker" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.dpancerz.poker" />
+      <recent name="com.dpancerz.cards" />
+      <recent name="com.dpancerz.game" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.dpancerz.poker" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/dpancerz" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.dpancerz.poker" />
+      <recent name="com.dpancerz.game" />
+      <recent name="com.dpancerz.cards" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.PokerGameTest.should_deal_the_cards_to_players">
-    <configuration name="DeckTest.smallest_deck_should_not_contain_low_rank_cards" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PokerHandTest.should_identify_pair">
+    <configuration name="DeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cards" />
       <extension name="coverage">
         <pattern>
@@ -90,28 +94,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.dpancerz.cards" />
       <option name="MAIN_CLASS_NAME" value="com.dpancerz.cards.DeckTest" />
-      <option name="METHOD_NAME" value="smallest_deck_should_not_contain_low_rank_cards" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PokerGameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cards" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dpancerz.poker.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.dpancerz.poker" />
-      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.PokerGameTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PokerGameTest.should_deal_the_cards_to_players" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cards" />
       <extension name="coverage">
         <pattern>
@@ -120,14 +108,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.dpancerz.poker" />
-      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.PokerGameTest" />
-      <option name="METHOD_NAME" value="should_deal_the_cards_to_players" />
+      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.GameTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HandsTest.should_high_card_be_lower_than_one_pair" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cards" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dpancerz.poker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dpancerz.poker" />
+      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.HandsTest" />
+      <option name="METHOD_NAME" value="should_high_card_be_lower_than_one_pair" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PokerGameTest.should_not_start_with_one_player" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PokerHandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cards" />
       <extension name="coverage">
         <pattern>
@@ -136,14 +139,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.dpancerz.poker" />
-      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.PokerGameTest" />
-      <option name="METHOD_NAME" value="should_not_start_with_one_player" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.PokerHandTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PokerGameTest.should_start_with_two_players" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PokerHandTest.should_identify_pair" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cards" />
       <extension name="coverage">
         <pattern>
@@ -152,8 +154,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.dpancerz.poker" />
-      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.PokerGameTest" />
-      <option name="METHOD_NAME" value="should_start_with_two_players" />
+      <option name="MAIN_CLASS_NAME" value="com.dpancerz.poker.PokerHandTest" />
+      <option name="METHOD_NAME" value="should_identify_pair" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -161,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PokerGameTest.should_deal_the_cards_to_players" />
-        <item itemvalue="JUnit.DeckTest.smallest_deck_should_not_contain_low_rank_cards" />
+        <item itemvalue="JUnit.PokerHandTest.should_identify_pair" />
+        <item itemvalue="JUnit.PokerHandTest" />
+        <item itemvalue="JUnit.HandsTest.should_high_card_be_lower_than_one_pair" />
+        <item itemvalue="JUnit.DeckTest" />
         <item itemvalue="JUnit.PokerGameTest" />
-        <item itemvalue="JUnit.PokerGameTest.should_start_with_two_players" />
-        <item itemvalue="JUnit.PokerGameTest.should_not_start_with_one_player" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +181,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581434654540</updated>
-      <workItem from="1581434657265" duration="15486000" />
+      <workItem from="1581434657265" duration="20610000" />
+      <workItem from="1581932313335" duration="8644000" />
     </task>
     <servers />
   </component>
@@ -191,59 +194,82 @@
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
     <state x="4142" y="134" width="1101" height="720" key="#Project_Structure/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581435213122" />
-    <state x="683" y="231" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1581447784703">
-      <screen x="0" y="27" width="1920" height="1006" />
-    </state>
-    <state x="683" y="231" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581447784703" />
-    <state x="4523" y="219" width="544" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581437118530" />
-    <state x="4553" y="376" width="484" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1581439533068">
+    <state x="4533" y="273" width="524" height="484" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1581959765328">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state x="4553" y="376" width="484" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581439533068" />
+    <state x="4533" y="273" width="524" height="484" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581959765328" />
+    <state x="4523" y="219" width="374" height="575" key="#com.intellij.ide.util.MemberChooser" timestamp="1581961157326">
+      <screen x="3840" y="0" width="1920" height="1080" />
+    </state>
+    <state x="683" y="231" width="544" height="562" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601955067" />
+    <state x="2603" y="795" width="374" height="575" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@1920.576.1920.1080" timestamp="1581943584345" />
+    <state x="4523" y="219" width="544" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581961157326" />
+    <state x="4553" y="376" width="494" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1581957207373">
+      <screen x="3840" y="0" width="1920" height="1080" />
+    </state>
+    <state x="4553" y="376" width="494" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581957207373" />
+    <state x="4554" y="0" width="482" height="1033" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581957274573">
+      <screen x="3840" y="0" width="1920" height="1080" />
+    </state>
+    <state x="4554" y="0" width="482" height="1033" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581957274573" />
     <state x="4583" y="273" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581435245232">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
     <state x="4583" y="273" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581435245232" />
-    <state width="1874" height="281" key="GridCell.Tab.0.bottom" timestamp="1581588159996">
+    <state width="1874" height="280" key="GridCell.Tab.0.bottom" timestamp="1581961531600">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806957" />
-    <state width="1874" height="281" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
-    <state width="1874" height="281" key="GridCell.Tab.0.center" timestamp="1581588159996">
+    <state width="1874" height="271" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601940087" />
+    <state width="1874" height="280" key="GridCell.Tab.0.bottom/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581961531600" />
+    <state width="1874" height="280" key="GridCell.Tab.0.center" timestamp="1581961531600">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806957" />
-    <state width="1874" height="281" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
-    <state width="1874" height="281" key="GridCell.Tab.0.left" timestamp="1581588159996">
+    <state width="1874" height="271" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601940086" />
+    <state width="1874" height="280" key="GridCell.Tab.0.center/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581961531600" />
+    <state width="1874" height="280" key="GridCell.Tab.0.left" timestamp="1581961531600">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806956" />
-    <state width="1874" height="281" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
-    <state width="1874" height="281" key="GridCell.Tab.0.right" timestamp="1581588159996">
+    <state width="1874" height="271" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601940086" />
+    <state width="1874" height="280" key="GridCell.Tab.0.left/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581961531600" />
+    <state width="1874" height="280" key="GridCell.Tab.0.right" timestamp="1581961531600">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="272" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581491806957" />
-    <state width="1874" height="281" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581588159996" />
+    <state width="1874" height="271" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601940087" />
+    <state width="1874" height="280" key="GridCell.Tab.0.right/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581961531600" />
     <state x="4333" y="173" width="924" height="684" key="Maven.ArtifactSearchDialog" timestamp="1581434959434">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
     <state x="4333" y="173" width="924" height="684" key="Maven.ArtifactSearchDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581434959434" />
-    <state x="726" y="219" width="458" height="619" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581454318159">
+    <state x="660" y="214" width="590" height="626" key="RefactorJ.ExtractClass" timestamp="1581599427649">
       <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state x="726" y="219" width="458" height="619" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581454318159" />
-    <state x="693" y="271" width="524" height="516" key="extract.method.dialog" timestamp="1581453879340">
+    <state x="660" y="214" width="590" height="626" key="RefactorJ.ExtractClass/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581599427649" />
+    <state x="775" y="191" width="360" height="676" key="RollbackChangesDialog" timestamp="1581601635800">
       <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state x="693" y="271" width="524" height="516" key="extract.method.dialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581453879340" />
-    <state x="4545" y="134" width="500" height="762" key="refactoring.ChangeSignatureDialog" timestamp="1581440059671">
+    <state x="775" y="191" width="360" height="676" key="RollbackChangesDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601635800" />
+    <state x="4566" y="206" width="460" height="665" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581957822406">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
-    <state x="4545" y="134" width="500" height="762" key="refactoring.ChangeSignatureDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581440059671" />
-    <state x="624" y="246" width="672" height="677" key="run.anything.popup" timestamp="1581453099971">
+    <state x="726" y="219" width="458" height="619" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581454318159" />
+    <state x="4566" y="206" width="460" height="665" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581957822406" />
+    <state x="693" y="271" width="524" height="516" key="extract.method.dialog" timestamp="1581601073502">
       <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state x="624" y="246" width="672" height="677" key="run.anything.popup/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581453099971" />
+    <state x="693" y="271" width="524" height="516" key="extract.method.dialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581601073502" />
+    <state x="4545" y="134" width="500" height="762" key="refactoring.ChangeSignatureDialog" timestamp="1581959475555">
+      <screen x="3840" y="0" width="1920" height="1080" />
+    </state>
+    <state x="705" y="152" key="refactoring.ChangeSignatureDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581602779903" />
+    <state x="4545" y="134" width="500" height="762" key="refactoring.ChangeSignatureDialog/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581959475555" />
+    <state x="624" y="246" width="672" height="677" key="run.anything.popup" timestamp="1581602817963">
+      <screen x="0" y="27" width="1920" height="1006" />
+    </state>
+    <state x="624" y="246" width="672" height="677" key="run.anything.popup/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581602817963" />
     <state x="4464" y="235" key="run.anything.popup/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@3840.0.1920.1080" timestamp="1581439898155" />
+    <state x="623" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1581599644695">
+      <screen x="0" y="27" width="1920" height="1006" />
+    </state>
+    <state x="623" y="246" width="672" height="678" key="search.everywhere.popup/0.27.1920.1006/3840.0.1920.1080/1920.576.1920.1080@0.27.1920.1006" timestamp="1581599644695" />
   </component>
 </project>
