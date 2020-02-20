@@ -1,8 +1,10 @@
 package com.dpancerz.poker;
 
-import static com.dpancerz.cards.Rank.JACK;
+import static com.dpancerz.cards.Rank.inDescendingOrder;
 import static com.dpancerz.poker.Hands.HIGH_CARD;
 import static com.dpancerz.poker.Hands.ONE_PAIR;
+import static com.dpancerz.poker.Hands.THREE_OF_A_KIND;
+import static com.dpancerz.poker.Hands.TWO_PAIR;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
@@ -29,14 +31,14 @@ class Hand {
     this.matchers = matchers();
   }
 
-  private static List<Matcher> matchers() {
-    return Stream.of(new OnePairMatcher(), new HighCardMatcher())
-        .sorted(comparing(Matcher::handRank).reversed())
-        .collect(toList());
-  }
-
   Hand() {
     this(new HashSet<>());
+  }
+
+  private static List<Matcher> matchers() {
+    return Stream.of(new ThreeOfAKindMatcher(), new TwoPairMatcher(), new OnePairMatcher(), new HighCardMatcher())
+        .sorted(comparing(Matcher::handRank).reversed())
+        .collect(toList());
   }
 
   int size() {
@@ -73,6 +75,10 @@ class Hand {
 
   private boolean containsAPair() {
     return containsNumberOfAKind(2);
+  }
+
+  private boolean containsTwoPair() {
+    return findPairs().size() >= 2;
   }
 
   private Set<Rank> findPairs() {
@@ -120,7 +126,7 @@ class Hand {
     }
 
     @Override
-    public PokerRank rank(final Hand cards)  {
+    public PokerRank rank(final Hand cards) {
       final Rank rank = cards.findPairs().stream().findFirst()
           .orElseThrow(() -> new RuntimeException(
               "does not contain a Pair even thoughh it should"));
@@ -131,6 +137,49 @@ class Hand {
     @Override
     public boolean matches(final Hand hand) {
       return hand.containsAPair();
+    }
+  }
+
+  private static class TwoPairMatcher implements Matcher {
+    @Override
+    public Hands handRank() {
+      return TWO_PAIR;
+    }
+
+    @Override
+    public PokerRank rank(final Hand cards) {
+      final List<Rank> rank = cards.findPairs()
+          .stream()
+          .sorted(inDescendingOrder())
+          .collect(toList());
+
+      return new TwoPair(rank.get(0), rank.get(1));
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      return hand.containsTwoPair();
+    }
+  }
+
+  private static class ThreeOfAKindMatcher implements Matcher {
+    @Override
+    public Hands handRank() {
+      return THREE_OF_A_KIND;
+    }
+
+    @Override
+    public PokerRank rank(final Hand cards) {
+      final Rank rank = cards.findNumberOfAKind(3).stream().findFirst()
+          .orElseThrow(() -> new RuntimeException(
+              "does not contain Three-of-a-kind even though it should"));
+
+      return new ThreeOfAKind(rank);
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      return hand.containsThreeOfAKind();
     }
   }
 

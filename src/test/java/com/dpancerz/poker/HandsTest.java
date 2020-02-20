@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class HandsTest {
   @Test
-  void should_high_card_be_lower_than_one_pair() {
+  void high_card_is_lower_than_one_pair() {
     assertThat(HIGH_CARD).isLessThan(ONE_PAIR);
   }
+
 }
