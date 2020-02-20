@@ -1,19 +1,20 @@
 package com.dpancerz.cards;
 
 public enum Rank {
-  ACE("A"),
-  KING("K"),
-  QUEEN("Q"),
-  JACK("J"),
-  TEN("10"),
-  NINE("9"),
-  EIGHT("8"),
-  SEVEN("7"),
-  SIX("6"),
-  FIVE("5"),
-  FOUR("4"),
+  TWO("2"),
   THREE("3"),
-  TWO("2");
+  FOUR("4"),
+  FIVE("5"),
+  SIX("6"),
+  SEVEN("7"),
+  EIGHT("8"),
+  NINE("9"),
+  TEN("10"),
+  JACK("J"),
+  QUEEN("Q"),
+  KING("K"),
+  ACE("A");
+
   private final String symbol;
 
   Rank(final String symbol) {

@@ -4,7 +4,7 @@ import static com.dpancerz.poker.Hands.ONE_PAIR;
 import static java.util.Objects.hash;
 import static java.util.Objects.requireNonNull;
 
-class OnePair extends Rank {
+class OnePair extends PokerRank {
   private final com.dpancerz.cards.Rank rank;
 
   public OnePair(final com.dpancerz.cards.Rank rank) {
@@ -26,7 +26,7 @@ class OnePair extends Rank {
   }
 
   @Override
-  public int compareTo(final Rank other) {
+  public int compareTo(final PokerRank other) {
     if ( !(other instanceof OnePair) ) {
       return super.compareTo(other);
     }
