@@ -1,5 +1,6 @@
 package com.dpancerz.poker;
 
+import static com.dpancerz.cards.Rank.ACE;
 import static com.dpancerz.cards.Rank.JACK;
 import static com.dpancerz.cards.Rank.QUEEN;
 import static com.dpancerz.cards.Rank.SEVEN;
@@ -17,6 +18,18 @@ import org.junit.jupiter.api.Test;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class PokerHandTest {
   private Hand hand;
+
+  @Test
+  void should_identify_high_card_only() {
+    // given
+    hand = handOf("4❤️", "7♣️", "9❤️", "J❤️", "Q♣️");
+
+    // when
+    final PokerRank pokerRank = hand.rank();
+
+    // then
+    assertEquals(HighCard.of(QUEEN), pokerRank);
+  }
 
   @Test
   void should_identify_pair() {
@@ -55,15 +68,27 @@ class PokerHandTest {
   }
 
   @Test
-  void should_identify_high_card_only() {
+  void should_identify_four_of_a_kind() {
     // given
-    hand = handOf("4❤️", "7♣️", "9❤️", "J❤️", "Q♣️");
+    hand = handOf("A♦️", "A♣️", "A❤️", "A♠️", "Q♣️");
 
     // when
     final PokerRank pokerRank = hand.rank();
 
     // then
-    assertEquals(HighCard.of(QUEEN), pokerRank);
+    assertEquals(FourOfAKind.of(ACE), pokerRank);
+  }
+
+  @Test
+  void should_identify_a_full_house() {
+    // given
+    hand = handOf("A♦️", "A♣️", "A❤️", "Q♠️", "Q♣️");
+
+    // when
+    final PokerRank pokerRank = hand.rank();
+
+    // then
+    assertEquals(FullHouse.of(ACE, QUEEN), pokerRank);
   }
 
   private Hand handOf(String... cardIds) {

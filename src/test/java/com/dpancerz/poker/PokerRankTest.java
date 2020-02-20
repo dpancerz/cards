@@ -1,7 +1,9 @@
 package com.dpancerz.poker;
 
 import static com.dpancerz.cards.Rank.EIGHT;
+import static com.dpancerz.cards.Rank.FIVE;
 import static com.dpancerz.cards.Rank.JACK;
+import static com.dpancerz.cards.Rank.KING;
 import static com.dpancerz.cards.Rank.QUEEN;
 import static com.dpancerz.cards.Rank.SEVEN;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,6 +41,22 @@ class PokerRankTest {
     @Test
     void two_pairs_of_same_strength_are_equal() {
       assertThat(TwoPair.of(JACK, SEVEN)).isEqualTo(TwoPair.of(JACK, SEVEN));
+    }
+  }
+
+  @Nested
+  class ThreesOfAKind {
+    @Test
+    void three_of_fives_is_lower_than_three_of_kings() {
+      assertThat(ThreeOfAKind.of(FIVE)).isLessThan(ThreeOfAKind.of(KING));
+    }
+  }
+
+  @Nested
+  class FoursOfAKind {
+    @Test
+    void four_of_queens_is_lower_than_four_of_kings() {
+      assertThat(FourOfAKind.of(QUEEN)).isLessThan(FourOfAKind.of(KING));
     }
   }
 }
