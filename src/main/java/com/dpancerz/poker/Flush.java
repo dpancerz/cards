@@ -3,12 +3,15 @@ package com.dpancerz.poker;
 import static com.dpancerz.poker.Hands.FLUSH;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toSet;
 
+import com.dpancerz.cards.Card;
 import com.dpancerz.cards.Rank;
 import com.dpancerz.cards.Suit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 class Flush extends PokerRank {
   public static final int POKER_HAND_SIZE = 5;
@@ -48,14 +51,16 @@ class Flush extends PokerRank {
 
   @Override
   public int compareTo(final PokerRank other) {
-    if ( !(other instanceof Flush) ) {
+    if (!(other instanceof Flush)) {
       return super.compareTo(other);
     }
     final Flush otherFlush = (Flush) other;
-    for (int i = 1; i <= POKER_HAND_SIZE; i ++) {
+    for (int i = 1; i <= POKER_HAND_SIZE; i++) {
       final int comparison = this.highestCard(i)
           .compareTo(otherFlush.highestCard(i));
-      if (comparison != 0) return comparison;
+      if (comparison != 0) {
+        return comparison;
+      }
     }
     return 0;
   }
@@ -67,8 +72,12 @@ class Flush extends PokerRank {
 
   @Override
   public boolean equals(final Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
 
     final Flush flush = (Flush) o;
     return Objects.equals(ranks, flush.ranks) &&
@@ -82,5 +91,15 @@ class Flush extends PokerRank {
 
   Suit suit() {
     return suit;
+  }
+
+  Set<Card> cards() { // feels hackish and unnecessary. to be replaced?
+    return ranks.stream()
+        .map(rank -> new Card(rank, suit))
+        .collect(toSet());
+  }
+
+  List<Rank> ranks() {
+    return ranks;
   }
 }

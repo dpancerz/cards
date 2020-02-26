@@ -133,6 +133,19 @@ class PokerHandTest {
     assertEquals(Flush.of(CLUBS, SEVEN, JACK, THREE, QUEEN, FIVE), pokerRank);
   }
 
+  @Test
+  void should_identify_a_straight_flush() {
+    // given
+    hand = handOf("A♣️", "K♣️", "Q♣️", "J♣️", "10♣️");
+
+    // when
+    final PokerRank pokerRank = hand.rank();
+
+    // then
+    assertEquals(StraightFlush.fromCardsInSuit(
+        asList(ACE, KING, QUEEN, JACK, TEN),
+        CLUBS), pokerRank);
+  }
 
   private Hand handOf(String... cardIds) {
     final Set<Card> cards = stream(cardIds)

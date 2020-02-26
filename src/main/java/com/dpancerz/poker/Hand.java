@@ -10,12 +10,12 @@ import static com.dpancerz.poker.Hands.FULL_HOUSE;
 import static com.dpancerz.poker.Hands.HIGH_CARD;
 import static com.dpancerz.poker.Hands.ONE_PAIR;
 import static com.dpancerz.poker.Hands.STRAIGHT;
+import static com.dpancerz.poker.Hands.STRAIGHT_FLUSH;
 import static com.dpancerz.poker.Hands.THREE_OF_A_KIND;
 import static com.dpancerz.poker.Hands.TWO_PAIR;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
 
 import com.dpancerz.cards.Card;
@@ -47,10 +47,10 @@ class Hand {
   }
 
   private static List<Matcher> matchers() {
-    return Stream.of(new FourOfAKindMatcher(), new FlushMatcher(),
-        new FullHouseMatcher(),
-        new StraightMatcher(), new ThreeOfAKindMatcher(), new TwoPairMatcher(),
-        new OnePairMatcher(), new HighCardMatcher())
+    return Stream.of(new StraightFlushMatcher(), new FourOfAKindMatcher(),
+        new FlushMatcher(), new FullHouseMatcher(), new StraightMatcher(),
+        new ThreeOfAKindMatcher(), new TwoPairMatcher(), new OnePairMatcher(),
+        new HighCardMatcher())
         .sorted(comparing(Matcher::handRank).reversed())
         .collect(toList());
   }
@@ -261,7 +261,7 @@ class Hand {
     }
 
     @Override
-    public PokerRank rank(final Hand cards) {
+    public Flush rank(final Hand cards) {
       final Map.Entry<Suit, List<Card>> suitsToCards = cards
           .groupedBySuit().entrySet().stream()
           .filter(entry -> entry.getValue().size() > 4)
@@ -292,6 +292,38 @@ class Hand {
       final Map<Suit, List<Card>> suitsToCards = hand.groupedBySuit();
       return suitsToCards.entrySet().stream()
           .anyMatch(entry -> entry.getValue().size() > 4);
+    }
+  }
+
+  private static class StraightFlushMatcher implements Matcher {
+    private final StraightMatcher straightMatcher;
+    private final FlushMatcher flushMatcher;
+
+    private StraightFlushMatcher() {
+      this.straightMatcher = new StraightMatcher();
+      this.flushMatcher = new FlushMatcher();
+    }
+
+    @Override
+    public Hands handRank() {
+      return STRAIGHT_FLUSH;
+    }
+
+    @Override
+    public PokerRank rank(final Hand cards) {
+      final Flush flush = flushMatcher.rank(cards);
+      return StraightFlush.fromCardsInSuit(
+          flush.ranks(), flush.suit());
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      if (!flushMatcher.matches(hand)) {
+        return false;
+      }
+      final Flush flush = flushMatcher.rank(hand);
+      final Set<Card> cardsThatFormAFlush = flush.cards();
+      return straightMatcher.matches(new Hand(cardsThatFormAFlush));
     }
   }
 

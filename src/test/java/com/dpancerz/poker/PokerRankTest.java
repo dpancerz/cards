@@ -8,10 +8,12 @@ import static com.dpancerz.cards.Rank.KING;
 import static com.dpancerz.cards.Rank.NINE;
 import static com.dpancerz.cards.Rank.QUEEN;
 import static com.dpancerz.cards.Rank.SEVEN;
+import static com.dpancerz.cards.Rank.TEN;
 import static com.dpancerz.cards.Rank.TWO;
 import static com.dpancerz.cards.Suit.CLUBS;
 import static com.dpancerz.cards.Suit.DIAMONDS;
 import static com.dpancerz.cards.Suit.HEARTS;
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -59,6 +61,15 @@ class PokerRankTest {
   }
 
   @Nested
+  class Straights {
+    @Test
+    void straight_with_higher_card_wins() {
+      assertThat(Straight.startingFrom(EIGHT))
+          .isLessThan(Straight.startingFrom(NINE));
+    }
+  }
+
+  @Nested
   class FoursOfAKind {
     @Test
     void four_of_queens_is_lower_than_four_of_kings() {
@@ -101,6 +112,28 @@ class PokerRankTest {
     void flush_with_higher_lower_card_wins_if_highest_card_is_same() {
       assertThat(Flush.of(HEARTS, QUEEN, JACK, SEVEN, FIVE, FOUR))
           .isGreaterThan(Flush.of(HEARTS, QUEEN, NINE, SEVEN, FIVE, FOUR));
+    }
+  }
+
+  @Nested
+  class StraightFlushes {
+    @Test
+    void straight_flush_with_higher_card_wins() {
+      assertThat(StraightFlush.fromCardsInSuit(asList(QUEEN, JACK, TEN, NINE, EIGHT), CLUBS))
+          .isLessThan(StraightFlush.fromCardsInSuit(asList(KING, QUEEN, JACK, TEN, NINE), CLUBS));
+    }
+
+    @Test
+    void suit_does_not_matter_in_comparing() {
+      assertThat(StraightFlush.fromCardsInSuit(asList(QUEEN, JACK, TEN, NINE, EIGHT), CLUBS))
+          .isEqualByComparingTo(StraightFlush
+              .fromCardsInSuit(asList(QUEEN, JACK, TEN, NINE, EIGHT), HEARTS));
+    }
+
+    @Test
+    void but_two_straight_flushed_in_different_suit_are_not_same() {
+      assertThat(StraightFlush.fromCardsInSuit(asList(QUEEN, JACK, TEN, NINE, EIGHT), CLUBS))
+          .isNotEqualTo(StraightFlush.fromCardsInSuit(asList(QUEEN, JACK, TEN, NINE, EIGHT), HEARTS));
     }
   }
 }
