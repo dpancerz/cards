@@ -2,10 +2,16 @@ package com.dpancerz.poker;
 
 import static com.dpancerz.cards.Rank.EIGHT;
 import static com.dpancerz.cards.Rank.FIVE;
+import static com.dpancerz.cards.Rank.FOUR;
 import static com.dpancerz.cards.Rank.JACK;
 import static com.dpancerz.cards.Rank.KING;
+import static com.dpancerz.cards.Rank.NINE;
 import static com.dpancerz.cards.Rank.QUEEN;
 import static com.dpancerz.cards.Rank.SEVEN;
+import static com.dpancerz.cards.Rank.TWO;
+import static com.dpancerz.cards.Suit.CLUBS;
+import static com.dpancerz.cards.Suit.DIAMONDS;
+import static com.dpancerz.cards.Suit.HEARTS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -57,6 +63,44 @@ class PokerRankTest {
     @Test
     void four_of_queens_is_lower_than_four_of_kings() {
       assertThat(FourOfAKind.of(QUEEN)).isLessThan(FourOfAKind.of(KING));
+    }
+  }
+
+  @Nested
+  class FullHouses {
+    @Test
+    void full_house_of_lower_three_cards_but_higher_two_is_less() {
+      assertThat(FullHouse.of(QUEEN, FIVE)).isLessThan(FullHouse.of(KING, TWO));
+    }
+    @Test
+    void full_house_of_same_threes_but_lower_two_is_less() {
+      assertThat(FullHouse.of(QUEEN, FIVE)).isLessThan(FullHouse.of(QUEEN, JACK));
+    }
+    @Test
+    void full_house_of_same_threes_and_same_two_is_same() {
+      assertThat(FullHouse.of(QUEEN, JACK)).isEqualTo(FullHouse.of(QUEEN, JACK));
+    }
+  }
+
+  @Nested
+  class Flushes {
+
+    @Test
+    void orders_cards_in_descending_order() {
+      final Flush flush = Flush.of(DIAMONDS, SEVEN, FIVE, QUEEN, JACK, FOUR);
+
+      assertThat(flush.highestCard()).isEqualTo(QUEEN);
+    }
+
+    @Test
+    void flush_with_higher_card_wins() {
+      assertThat(Flush.of(CLUBS, QUEEN, JACK, SEVEN, FIVE, FOUR))
+          .isLessThan(Flush.of(CLUBS, KING, NINE, SEVEN, FIVE, FOUR));
+    }
+    @Test
+    void flush_with_higher_lower_card_wins_if_highest_card_is_same() {
+      assertThat(Flush.of(HEARTS, QUEEN, JACK, SEVEN, FIVE, FOUR))
+          .isGreaterThan(Flush.of(HEARTS, QUEEN, NINE, SEVEN, FIVE, FOUR));
     }
   }
 }

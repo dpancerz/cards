@@ -1,20 +1,28 @@
 package com.dpancerz.poker;
 
+import static com.dpancerz.cards.Rank.ACE;
+import static com.dpancerz.cards.Rank.TWO;
 import static com.dpancerz.cards.Rank.inDescendingOrder;
+import static com.dpancerz.maths.ConsecutiveCounter.containsConsecutive;
+import static com.dpancerz.poker.Hands.FLUSH;
 import static com.dpancerz.poker.Hands.FOUR_OF_A_KIND;
 import static com.dpancerz.poker.Hands.FULL_HOUSE;
 import static com.dpancerz.poker.Hands.HIGH_CARD;
 import static com.dpancerz.poker.Hands.ONE_PAIR;
+import static com.dpancerz.poker.Hands.STRAIGHT;
 import static com.dpancerz.poker.Hands.THREE_OF_A_KIND;
 import static com.dpancerz.poker.Hands.TWO_PAIR;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
 
 import com.dpancerz.cards.Card;
 import com.dpancerz.cards.Rank;
+import com.dpancerz.cards.Suit;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -39,9 +47,10 @@ class Hand {
   }
 
   private static List<Matcher> matchers() {
-    return Stream.of(new FourOfAKindMatcher(), new FullHouseMatcher(),
-        new ThreeOfAKindMatcher(), new TwoPairMatcher(), new OnePairMatcher(),
-        new HighCardMatcher())
+    return Stream.of(new FourOfAKindMatcher(), new FlushMatcher(),
+        new FullHouseMatcher(),
+        new StraightMatcher(), new ThreeOfAKindMatcher(), new TwoPairMatcher(),
+        new OnePairMatcher(), new HighCardMatcher())
         .sorted(comparing(Matcher::handRank).reversed())
         .collect(toList());
   }
@@ -73,9 +82,21 @@ class Hand {
         .max(comparing(Card::rank));
   }
 
+  Card getLowestCard() {
+    return cards.stream()
+        .min(comparing(Card::rank))
+        .orElseThrow(() -> new RuntimeException(
+            "empty hand does not have a lowest card"));
+  }
+
   Map<com.dpancerz.cards.Rank, List<Card>> groupedByRank() {
     return cards.stream()
         .collect(groupingBy(Card::rank));
+  }
+
+  Map<Suit, List<Card>> groupedBySuit() {
+    return cards.stream()
+        .collect(groupingBy(Card::suit));
   }
 
   private boolean containsAPair() {
@@ -233,6 +254,47 @@ class Hand {
     }
   }
 
+  private static class FlushMatcher implements Matcher {
+    @Override
+    public Hands handRank() {
+      return FLUSH;
+    }
+
+    @Override
+    public PokerRank rank(final Hand cards) {
+      final Map.Entry<Suit, List<Card>> suitsToCards = cards
+          .groupedBySuit().entrySet().stream()
+          .filter(entry -> entry.getValue().size() > 4)
+          .max(withHighestCard(0)
+              .thenComparing(withHighestCard(1))
+              .thenComparing(withHighestCard(2))
+              .thenComparing(withHighestCard(3))
+              .thenComparing(withHighestCard(4)))
+          .orElseThrow(RuntimeException::new);
+
+      final Suit suit = suitsToCards.getKey();
+      final List<Rank> ranks = suitsToCards.getValue().stream()
+          .map(Card::rank).collect(toList());
+
+      return new Flush(suit, ranks);
+    }
+
+    private Comparator<Entry<Suit, List<Card>>> withHighestCard(final int which) {
+      return comparing(entry -> topRank(entry, which));
+    }
+
+    private Rank topRank(final Entry<Suit, List<Card>> entry, final int which) {
+      return entry.getValue().get(which).rank();
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      final Map<Suit, List<Card>> suitsToCards = hand.groupedBySuit();
+      return suitsToCards.entrySet().stream()
+          .anyMatch(entry -> entry.getValue().size() > 4);
+    }
+  }
+
   private static class FourOfAKindMatcher implements Matcher {
     @Override
     public Hands handRank() {
@@ -251,6 +313,44 @@ class Hand {
     @Override
     public boolean matches(final Hand hand) {
       return hand.containsFourOfAKind();
+    }
+  }
+
+  private static class StraightMatcher implements Matcher {
+    @Override
+    public Hands handRank() {
+      return STRAIGHT;
+    }
+
+    @Override
+    public PokerRank rank(final Hand hand) {
+      final Card highestCard = hand.highestCard()
+          .orElseThrow(() -> new RuntimeException("Empty hand not allowed!"));
+      final Rank lowestRank = hand.getLowestCard().rank();
+
+      if (highestCard.rank() == ACE && lowestRank == TWO) {
+        return Straight.startingFrom(ACE);
+      }
+      return Straight.startingFrom(lowestRank);
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      final Set<Rank> ranks = hand.groupedByRank().keySet();
+      final List<Integer> integerRanks = asIntegers(ranks);
+
+      return containsFiveConsecutive(integerRanks);
+    }
+
+    private static boolean containsFiveConsecutive(final List<Integer> integerRanks) {
+      return containsConsecutive(integerRanks, 5);
+    }
+
+    private List<Integer> asIntegers(final Set<Rank> ranks) {
+      return ranks.stream().map(RanksInStraight::of)
+          .flatMap(rank -> rank.numericRanks().stream())
+          .sorted()
+          .collect(toList());
     }
   }
 

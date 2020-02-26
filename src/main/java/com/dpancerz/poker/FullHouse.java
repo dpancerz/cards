@@ -18,6 +18,17 @@ class FullHouse extends PokerRank {
     return new FullHouse(threeOfAKind, pair);
   }
 
+  @Override public int compareTo(final PokerRank other) {
+    if (! (other instanceof FullHouse)) {
+      return super.compareTo(other);
+    }
+    final FullHouse otherFull = (FullHouse) other;
+    if (this.threeOfAKind != otherFull.threeOfAKind) {
+      return this.threeOfAKind.compareTo(otherFull.threeOfAKind);
+    }
+    return this.pair.compareTo(otherFull.pair);
+  }
+
   @Override
   Hands rank() {
     return FULL_HOUSE;
@@ -38,7 +49,8 @@ class FullHouse extends PokerRank {
         pair == fullHouse.pair;
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(threeOfAKind, pair);
   }
 }

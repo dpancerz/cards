@@ -1,9 +1,15 @@
 package com.dpancerz.poker;
 
 import static com.dpancerz.cards.Rank.ACE;
+import static com.dpancerz.cards.Rank.FIVE;
 import static com.dpancerz.cards.Rank.JACK;
+import static com.dpancerz.cards.Rank.KING;
 import static com.dpancerz.cards.Rank.QUEEN;
 import static com.dpancerz.cards.Rank.SEVEN;
+import static com.dpancerz.cards.Rank.TEN;
+import static com.dpancerz.cards.Rank.THREE;
+import static com.dpancerz.cards.Suit.CLUBS;
+import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -91,6 +97,43 @@ class PokerHandTest {
     assertEquals(FullHouse.of(ACE, QUEEN), pokerRank);
   }
 
+  @Test
+  void should_identify_a_straight() {
+    // given
+    hand = handOf("A♦️", "K♣️", "Q♦️", "J❤️", "10♣️");
+
+    // when
+    final PokerRank pokerRank = hand.rank();
+
+    // then
+    assertEquals(Straight.startingFrom(TEN), pokerRank);
+  }
+
+  @Test
+  void should_identify_a_straight_that_contains_ace_as_lowest_card() {
+    // given
+    hand = handOf("A♦️", "2♣️", "3♦️", "4❤️", "5♣️");
+
+    // when
+    final PokerRank pokerRank = hand.rank();
+
+    // then
+    assertEquals(Straight.startingFrom(ACE), pokerRank);
+  }
+
+  @Test
+  void should_identify_a_flush() {
+    // given
+    hand = handOf("7♣️", "J♣️", "3♣️", "Q♣️", "5♣️");
+
+    // when
+    final PokerRank pokerRank = hand.rank();
+
+    // then
+    assertEquals(Flush.of(CLUBS, SEVEN, JACK, THREE, QUEEN, FIVE), pokerRank);
+  }
+
+
   private Hand handOf(String... cardIds) {
     final Set<Card> cards = stream(cardIds)
         .map(TestCardMapper::cardFor)
@@ -98,22 +141,4 @@ class PokerHandTest {
     return new Hand(cards);
   }
 
-
-//"❤️"
-//"♦️"
-//"♣️"
-//"♠️"
-//"A"
-//"K"
-//"Q"
-//"J"
-//"10"
-//"9"
-//"8"
-//"7"
-//"6"
-//"5"
-//"4"
-//"3"
-//"2"
 }
