@@ -4,6 +4,8 @@ import static com.dpancerz.poker.Hands.ONE_PAIR;
 import static java.util.Objects.hash;
 import static java.util.Objects.requireNonNull;
 
+import com.dpancerz.cards.Rank;
+
 class OnePair extends PokerRank {
   private final com.dpancerz.cards.Rank rank;
 
@@ -44,5 +46,26 @@ class OnePair extends PokerRank {
   @Override
   public int hashCode() {
     return hash(rank);
+  }
+
+  static class Matcher implements Hand.Matcher {
+    @Override
+    public Hands handRank() {
+      return ONE_PAIR;
+    }
+
+    @Override
+    public PokerRank rank(final Hand cards) {
+      final Rank rank = cards.findPairs().stream().findFirst()
+          .orElseThrow(() -> new RuntimeException(
+              "does not contain a Pair even thoughh it should"));
+
+      return new OnePair(rank);
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      return hand.containsAPair();
+    }
   }
 }

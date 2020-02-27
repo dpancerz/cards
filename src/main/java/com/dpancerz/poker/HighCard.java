@@ -4,6 +4,9 @@ import static com.dpancerz.poker.Hands.HIGH_CARD;
 import static java.util.Objects.hash;
 import static java.util.Objects.requireNonNull;
 
+import com.dpancerz.cards.Card;
+import com.dpancerz.poker.Hand.Matcher;
+
 class HighCard extends PokerRank {
   private final com.dpancerz.cards.Rank rank;
 
@@ -44,5 +47,24 @@ class HighCard extends PokerRank {
 
   @Override public String toString() {
     return "HighCard: " + rank;
+  }
+
+  static class Matcher implements Hand.Matcher {
+    @Override
+    public Hands handRank() {
+      return HIGH_CARD;
+    }
+
+    @Override
+    public PokerRank rank(final Hand hand) {
+      final Card card = hand.highestCard()
+          .orElseThrow(() -> new RuntimeException("Empty hand not allowed?"));
+      return new HighCard(card.rank());
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      return true;
+    }
   }
 }

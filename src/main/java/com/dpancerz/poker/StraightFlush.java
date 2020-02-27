@@ -2,10 +2,12 @@ package com.dpancerz.poker;
 
 import static com.dpancerz.poker.Hands.STRAIGHT_FLUSH;
 
+import com.dpancerz.cards.Card;
 import com.dpancerz.cards.Rank;
 import com.dpancerz.cards.Suit;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 class StraightFlush extends PokerRank {
   private final Straight straight;
@@ -63,5 +65,37 @@ class StraightFlush extends PokerRank {
   @Override
   public int hashCode() {
     return Objects.hash(flush, straight);
+  }
+
+  static class Matcher implements Hand.Matcher {
+    private final Straight.Matcher straightMatcher;
+    private final Flush.Matcher flushMatcher;
+
+    Matcher() {
+      this.straightMatcher = new Straight.Matcher();
+      this.flushMatcher = new Flush.Matcher();
+    }
+
+    @Override
+    public Hands handRank() {
+      return STRAIGHT_FLUSH;
+    }
+
+    @Override
+    public PokerRank rank(final Hand cards) {
+      final Flush flush = flushMatcher.rank(cards);
+      return StraightFlush.fromCardsInSuit(
+          flush.ranks(), flush.suit());
+    }
+
+    @Override
+    public boolean matches(final Hand hand) {
+      if (!flushMatcher.matches(hand)) {
+        return false;
+      }
+      final Flush flush = flushMatcher.rank(hand);
+      final Set<Card> cardsThatFormAFlush = flush.cards();
+      return straightMatcher.matches(new Hand(cardsThatFormAFlush));
+    }
   }
 }
