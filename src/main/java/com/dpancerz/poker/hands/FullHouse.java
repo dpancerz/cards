@@ -1,11 +1,10 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 import static com.dpancerz.cards.Rank.inDescendingOrder;
-import static com.dpancerz.poker.Hands.FULL_HOUSE;
+import static com.dpancerz.poker.hands.Hands.FULL_HOUSE;
 
 import com.dpancerz.cards.Card;
 import com.dpancerz.cards.Rank;
-import com.dpancerz.poker.Hand.Matcher;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
@@ -60,14 +59,14 @@ class FullHouse extends PokerRank {
     return Objects.hash(threeOfAKind, pair);
   }
 
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     @Override
     public Hands handRank() {
       return FULL_HOUSE;
     }
 
     @Override
-    public PokerRank rank(final Hand cards) {
+    public PokerRank rank(final Cards cards) {
       final Collection<List<Card>> groupedByRank = cards.groupedByRank().values();
       if (countOfRanksOfMinimumSize(groupedByRank, 2) < 2) {
         throw new RuntimeException("can't be a full house if does not contain"
@@ -98,7 +97,7 @@ class FullHouse extends PokerRank {
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       final Collection<List<Card>> groupedByRank = hand.groupedByRank().values();
       return countOfRanksOfMinimumSize(groupedByRank, 2) > 1
           && countOfRanksOfMinimumSize(groupedByRank, 3) > 0;

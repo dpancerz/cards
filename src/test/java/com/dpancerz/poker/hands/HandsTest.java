@@ -1,7 +1,7 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
-import static com.dpancerz.poker.Hands.HIGH_CARD;
-import static com.dpancerz.poker.Hands.ONE_PAIR;
+import static com.dpancerz.poker.hands.Hands.HIGH_CARD;
+import static com.dpancerz.poker.hands.Hands.ONE_PAIR;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;

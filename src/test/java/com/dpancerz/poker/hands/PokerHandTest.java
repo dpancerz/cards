@@ -1,4 +1,4 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 import static com.dpancerz.cards.Rank.ACE;
 import static com.dpancerz.cards.Rank.FIVE;

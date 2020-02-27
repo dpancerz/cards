@@ -1,6 +1,6 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
-import static com.dpancerz.poker.Hands.STRAIGHT_FLUSH;
+import static com.dpancerz.poker.hands.Hands.STRAIGHT_FLUSH;
 
 import com.dpancerz.cards.Card;
 import com.dpancerz.cards.Rank;
@@ -67,7 +67,7 @@ class StraightFlush extends PokerRank {
     return Objects.hash(flush, straight);
   }
 
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     private final Straight.Matcher straightMatcher;
     private final Flush.Matcher flushMatcher;
 
@@ -82,20 +82,20 @@ class StraightFlush extends PokerRank {
     }
 
     @Override
-    public PokerRank rank(final Hand cards) {
+    public PokerRank rank(final Cards cards) {
       final Flush flush = flushMatcher.rank(cards);
       return StraightFlush.fromCardsInSuit(
           flush.ranks(), flush.suit());
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       if (!flushMatcher.matches(hand)) {
         return false;
       }
       final Flush flush = flushMatcher.rank(hand);
       final Set<Card> cardsThatFormAFlush = flush.cards();
-      return straightMatcher.matches(new Hand(cardsThatFormAFlush));
+      return straightMatcher.matches(new Cards(cardsThatFormAFlush));
     }
   }
 }

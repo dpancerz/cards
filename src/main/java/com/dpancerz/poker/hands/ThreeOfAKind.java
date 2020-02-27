@@ -1,7 +1,7 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 
-import static com.dpancerz.poker.Hands.THREE_OF_A_KIND;
+import static com.dpancerz.poker.hands.Hands.THREE_OF_A_KIND;
 import static java.util.Objects.hash;
 
 import com.dpancerz.cards.Rank;
@@ -48,14 +48,14 @@ class ThreeOfAKind extends PokerRank {
   public int hashCode() {
     return hash(rank);
   }
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     @Override
     public Hands handRank() {
       return THREE_OF_A_KIND;
     }
 
     @Override
-    public PokerRank rank(final Hand cards) {
+    public PokerRank rank(final Cards cards) {
       final Rank rank = cards.findNumberOfAKind(3).stream().findFirst()
           .orElseThrow(() -> new RuntimeException(
               "does not contain Three-of-a-kind even though it should"));
@@ -64,7 +64,7 @@ class ThreeOfAKind extends PokerRank {
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       return hand.containsThreeOfAKind();
     }
   }

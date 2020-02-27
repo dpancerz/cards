@@ -1,11 +1,10 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
-import static com.dpancerz.poker.Hands.HIGH_CARD;
+import static com.dpancerz.poker.hands.Hands.HIGH_CARD;
 import static java.util.Objects.hash;
 import static java.util.Objects.requireNonNull;
 
 import com.dpancerz.cards.Card;
-import com.dpancerz.poker.Hand.Matcher;
 
 class HighCard extends PokerRank {
   private final com.dpancerz.cards.Rank rank;
@@ -49,21 +48,21 @@ class HighCard extends PokerRank {
     return "HighCard: " + rank;
   }
 
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     @Override
     public Hands handRank() {
       return HIGH_CARD;
     }
 
     @Override
-    public PokerRank rank(final Hand hand) {
+    public PokerRank rank(final Cards hand) {
       final Card card = hand.highestCard()
           .orElseThrow(() -> new RuntimeException("Empty hand not allowed?"));
       return new HighCard(card.rank());
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       return true;
     }
   }

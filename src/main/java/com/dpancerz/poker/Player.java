@@ -3,6 +3,7 @@ package com.dpancerz.poker;
 import static java.util.UUID.randomUUID;
 
 import com.dpancerz.cards.Card;
+import com.dpancerz.poker.hands.Hand;
 
 class Player {
   private final Hand hand;

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.dpancerz.poker.hands.HandSpy;
 import org.junit.jupiter.api.Test;
 
 class GameTest {

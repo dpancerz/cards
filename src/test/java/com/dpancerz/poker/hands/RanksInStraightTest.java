@@ -1,8 +1,8 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
-import static com.dpancerz.poker.RanksInStraight.ACE;
-import static com.dpancerz.poker.RanksInStraight.KING;
-import static com.dpancerz.poker.RanksInStraight.TWO;
+import static com.dpancerz.poker.hands.RanksInStraight.ACE;
+import static com.dpancerz.poker.hands.RanksInStraight.KING;
+import static com.dpancerz.poker.hands.RanksInStraight.TWO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;

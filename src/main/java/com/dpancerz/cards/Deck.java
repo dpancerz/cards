@@ -21,7 +21,7 @@ public class Deck {
   public static Deck startingFrom(final Rank lowestRank) {
     return new Deck(new LinkedList<>(allOf(Suit.class).stream()
         .flatMap(suit -> allOf(Rank.class).stream()
-            .filter(rank -> rank.compareTo(lowestRank) <= 0)
+            .filter(rank -> rank.compareTo(lowestRank) >= 0)
             .map(rank -> new Card(rank, suit)))
         .collect(toList())));
   }

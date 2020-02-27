@@ -1,7 +1,7 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 import static com.dpancerz.cards.Rank.inDescendingOrder;
-import static com.dpancerz.poker.Hands.TWO_PAIR;
+import static com.dpancerz.poker.hands.Hands.TWO_PAIR;
 import static java.lang.String.format;
 import static java.util.Objects.hash;
 import static java.util.stream.Collectors.toList;
@@ -70,14 +70,14 @@ class TwoPair extends PokerRank {
     return "TwoPair: " + greater + ", " + lower;
   }
 
-  public static class Matcher implements Hand.Matcher {
+  public static class Matcher implements com.dpancerz.poker.hands.Matcher {
     @Override
     public Hands handRank() {
       return TWO_PAIR;
     }
 
     @Override
-    public PokerRank rank(final Hand cards) {
+    public PokerRank rank(final Cards cards) {
       final List<Rank> rank = cards.findPairs()
           .stream()
           .sorted(inDescendingOrder())
@@ -87,7 +87,7 @@ class TwoPair extends PokerRank {
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       return hand.containsTwoPair();
     }
   }

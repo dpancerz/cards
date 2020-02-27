@@ -1,6 +1,6 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
-import static com.dpancerz.poker.Hands.FLUSH;
+import static com.dpancerz.poker.hands.Hands.FLUSH;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
 import static java.util.Comparator.comparingInt;
@@ -108,14 +108,14 @@ class Flush extends PokerRank {
     return Objects.hash(ranks, suit);
   }
 
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     @Override
     public Hands handRank() {
       return FLUSH;
     }
 
     @Override
-    public Flush rank(final Hand cards) {
+    public Flush rank(final Cards cards) {
       final Map.Entry<Suit, List<Card>> suitsToCards = cards
           .groupedBySuit().entrySet().stream()
           .filter(entry -> entry.getValue().size() > 4)
@@ -142,7 +142,7 @@ class Flush extends PokerRank {
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       final Map<Suit, List<Card>> suitsToCards = hand.groupedBySuit();
       return suitsToCards.entrySet().stream()
           .anyMatch(entry -> entry.getValue().size() > 4);

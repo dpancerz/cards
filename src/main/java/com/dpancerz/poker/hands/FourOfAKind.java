@@ -1,10 +1,9 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
-import static com.dpancerz.poker.Hands.FOUR_OF_A_KIND;
+import static com.dpancerz.poker.hands.Hands.FOUR_OF_A_KIND;
 import static java.util.Objects.hash;
 
 import com.dpancerz.cards.Rank;
-import com.dpancerz.poker.Hand.Matcher;
 
 class FourOfAKind extends PokerRank {
   private final Rank rank;
@@ -49,14 +48,14 @@ class FourOfAKind extends PokerRank {
     return hash(rank);
   }
 
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     @Override
     public Hands handRank() {
       return FOUR_OF_A_KIND;
     }
 
     @Override
-    public PokerRank rank(final Hand cards) {
+    public PokerRank rank(final Cards cards) {
       final Rank rank = cards.findNumberOfAKind(4).stream().findFirst()
           .orElseThrow(() -> new RuntimeException(
               "does not contain Four-of-a-kind even though it should"));
@@ -65,7 +64,7 @@ class FourOfAKind extends PokerRank {
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       return hand.containsFourOfAKind();
     }
   }

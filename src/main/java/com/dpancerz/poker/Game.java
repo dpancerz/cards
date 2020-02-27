@@ -45,7 +45,7 @@ class Game {
   }
 
   void dealCards() {
-    IntStream.range(0, NUMBER_OF_CARDS_PER_PLAYER)
+    IntStream.rangeClosed(1, NUMBER_OF_CARDS_PER_PLAYER)
         .forEach(cardNumber -> players
             .forEach(player -> player
                 .drawCard(deck.drawOne())));

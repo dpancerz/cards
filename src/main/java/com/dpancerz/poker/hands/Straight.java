@@ -1,9 +1,9 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 import static com.dpancerz.cards.Rank.ACE;
 import static com.dpancerz.cards.Rank.TWO;
 import static com.dpancerz.maths.ConsecutiveCounter.containsConsecutive;
-import static com.dpancerz.poker.Hands.STRAIGHT;
+import static com.dpancerz.poker.hands.Hands.STRAIGHT;
 import static java.util.stream.Collectors.toList;
 
 import com.dpancerz.cards.Card;
@@ -76,7 +76,7 @@ class Straight extends PokerRank {
     return Objects.hash(lowestCard, highestCard);
   }
 
-  static class Matcher implements Hand.Matcher {
+  static class Matcher implements com.dpancerz.poker.hands.Matcher {
     private static boolean containsFiveConsecutive(final List<Integer> integerRanks) {
       return containsConsecutive(integerRanks, 5);
     }
@@ -87,7 +87,7 @@ class Straight extends PokerRank {
     }
 
     @Override
-    public PokerRank rank(final Hand hand) {
+    public PokerRank rank(final Cards hand) {
       final Card highestCard = hand.highestCard()
           .orElseThrow(() -> new RuntimeException("Empty hand not allowed!"));
       final Rank lowestRank = hand.getLowestCard().rank();
@@ -99,7 +99,7 @@ class Straight extends PokerRank {
     }
 
     @Override
-    public boolean matches(final Hand hand) {
+    public boolean matches(final Cards hand) {
       final Set<Rank> ranks = hand.groupedByRank().keySet();
       final List<Integer> integerRanks = asIntegers(ranks);
 

@@ -26,7 +26,7 @@ class DeckTest {
     deck.shuffle();
 
     //then
-    //System.out.println(deck.toString());
+//    System.out.println(deck.toString());
     assertEquals(24, deck.size());
   }
 
@@ -39,7 +39,7 @@ class DeckTest {
     Card drawnCard = deck.drawOne();
 
     // then
-    // System.out.println(drawnCard);
+//     System.out.println(drawnCard);
     assertEquals(51, deck.size());
     assertTrue(deck.doesNotContain(drawnCard));
   }

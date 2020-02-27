@@ -1,4 +1,4 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 abstract class PokerRank implements Comparable<PokerRank> {
   @Override

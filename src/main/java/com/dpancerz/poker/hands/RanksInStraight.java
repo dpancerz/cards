@@ -1,4 +1,4 @@
-package com.dpancerz.poker;
+package com.dpancerz.poker.hands;
 
 import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
